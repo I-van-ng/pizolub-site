@@ -9,60 +9,69 @@ interface LaboratoryProps {
 export default function Laboratory({ lang }: LaboratoryProps) {
   const content = {
     fr: {
-      badge: "LE COEUR DE NOTRE EXCELLENCE",
+      badge: "LABORATOIRE TECHNIQUE",
       title: (
         <>
-          NOTRE <span className="text-pizolub-blue italic">LABORATOIRE</span>{" "}
-          EST LA REFERENCE{" "}
-          <span className="text-pizolub-blue-light uppercase">CEMAC</span>
+          UN <span className="text-pizolub-blue italic">LABORATOIRE</span>{" "}
+          AU SERVICE DE LA{" "}
+          <span className="text-pizolub-blue-light uppercase">QUALITE</span>
         </>
       ),
       desc:
-        "Si Pizolub est reconnu pour sa qualite premium dans toute la zone CEMAC, c'est grace a notre laboratoire de pointe. Ici, nos experts certifies soumettent chaque lot a des tests rigoureux.",
-      certs: [
+        "Le laboratoire Pizolub assure le contrôle qualité, la conformité technique et le suivi de performance de nos huiles, de la réception des matières premières jusqu’à l’analyse des produits en service.",
+      analyses: [
         {
-          title: "Standard ISO",
-          desc: "Protocoles de test internationaux rigoureux.",
+          title: "Analyse des huiles neuves",
+          items: [
+            "Contrôle qualité des matières premières : huiles de base et additifs.",
+            "Contrôles qualité en cours de production et sur produits finis.",
+            "Vérification de la conformité des huiles avec les normes et spécifications techniques.",
+          ],
         },
         {
-          title: "Controle CEMAC",
-          desc: "Reference qualite en Afrique centrale.",
-        },
-        {
-          title: "Formulation equatoriale",
-          desc: "Adaptee aux chaleurs extremes du Gabon.",
+          title: "Analyse des huiles en service",
+          items: [
+            "Détermination de l’état de dégradation de l’huile en service.",
+            "Suivi de la performance de l’huile.",
+            "Détermination de la durée limite d’utilisation de l’huile.",
+            "Suivi de l’usure des pièces en fonction des éléments métalliques présents dans l’huile.",
+          ],
         },
       ],
       award:
-        "Reconnu par les plus grands constructeurs mondiaux pour la protection moteur en milieu equatorial exigeant.",
+        "Nos procédures de laboratoire soutiennent une exigence simple : garantir des huiles fiables, suivies et adaptées aux conditions réelles d’utilisation.",
     },
     en: {
-      badge: "THE HEART OF OUR EXCELLENCE",
+      badge: "TECHNICAL LABORATORY",
       title: (
         <>
-          OUR <span className="text-pizolub-blue italic">LABORATORY</span> IS
-          THE <span className="text-pizolub-blue-light uppercase">CEMAC</span>{" "}
-          REFERENCE
+          A <span className="text-pizolub-blue italic">LABORATORY</span> IN
+          SERVICE OF <span className="text-pizolub-blue-light uppercase">QUALITY</span>
         </>
       ),
       desc:
-        "If Pizolub is recognized for its premium quality throughout the CEMAC zone, it is thanks to our state-of-the-art laboratory. Here, our certified experts subject every batch to rigorous testing.",
-      certs: [
+        "The Pizolub laboratory ensures quality control, technical compliance, and oil performance monitoring from raw materials to used-oil analysis.",
+      analyses: [
         {
-          title: "ISO Standard",
-          desc: "Rigorous international testing protocols.",
+          title: "New oil analysis",
+          items: [
+            "Quality control of raw materials: base oils and additives.",
+            "In-process quality checks and finished product control.",
+            "Verification of compliance with technical standards and specifications.",
+          ],
         },
         {
-          title: "CEMAC Control",
-          desc: "A quality benchmark in Central Africa.",
-        },
-        {
-          title: "Equatorial Formulation",
-          desc: "Adapted to Gabon's extreme heat.",
+          title: "Used oil analysis",
+          items: [
+            "Determination of oil degradation state in service.",
+            "Monitoring of oil performance over time.",
+            "Determination of the oil's usable life limit.",
+            "Monitoring of component wear based on metallic elements present in the oil.",
+          ],
         },
       ],
       award:
-        "Recognized by global manufacturers for engine protection in demanding equatorial environments.",
+        "Our laboratory procedures follow a simple standard: delivering reliable, monitored oils suited to real operating conditions.",
     },
   }[lang];
 
@@ -81,26 +90,26 @@ export default function Laboratory({ lang }: LaboratoryProps) {
             >
               <div className="col-span-4 row-span-4 border-8 border-pizolub-blue-dark shadow-xl relative overflow-hidden group">
                 <img
-                  src="/expertise-local.jpg"
-                  alt="Laboratoire Pizolub - Analyse"
+                  src="/laboratoire-equipe-2026.jpeg"
+                  alt="Equipe du laboratoire Pizolub"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-pizolub-blue-dark/20 group-hover:bg-transparent transition-colors duration-500" />
                 <div className="absolute bottom-2 left-2 bg-pizolub-blue-dark text-white text-[8px] font-bold px-2 py-0.5 uppercase tracking-tighter">
-                  Analyse // Laboratoire
+                  {lang === "fr" ? "Equipe laboratoire" : "Laboratory team"}
                 </div>
               </div>
 
               <div className="col-span-2 row-span-3 border-4 border-white shadow-lg relative overflow-hidden">
                 <img
-                  src="/laboratoire-02.jpg"
-                  alt="Laboratoire Pizolub - Controle qualite"
+                  src="/laboratoire-technicien-2026.jpeg"
+                  alt="Technicien Pizolub en analyse laboratoire"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-pizolub-blue-dark/25" />
                 <div className="absolute bottom-2 left-2 bg-white/90 text-pizolub-blue-dark text-[8px] font-bold px-2 py-0.5 uppercase tracking-tighter">
-                  Controle // Conformite
+                  {lang === "fr" ? "Controle technique" : "Technical control"}
                 </div>
               </div>
 
@@ -112,28 +121,28 @@ export default function Laboratory({ lang }: LaboratoryProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-pizolub-blue-dark/50 to-transparent" />
                 <div className="absolute top-2 left-2 bg-pizolub-blue-light text-white text-[8px] font-bold px-2 py-0.5 uppercase tracking-tighter">
-                  Tests // Validation
+                  {lang === "fr" ? "Tests et validation" : "Testing and validation"}
                 </div>
               </div>
 
-              <div className="col-span-3 row-span-3 bg-pizolub-blue-dark/5 border-2 border-dashed border-pizolub-blue-dark/20 flex flex-col items-center justify-center px-5 text-center hover:bg-pizolub-blue-dark/10 transition-colors">
+              <div className="col-span-3 row-span-3 bg-pizolub-blue-dark/5 border border-pizolub-blue-dark/15 flex flex-col items-center justify-center px-5 text-center hover:bg-pizolub-blue-dark/10 transition-colors">
                 <Zap className="text-pizolub-blue-light" size={24} />
                 <span className="mt-3 text-[10px] font-black uppercase tracking-widest text-pizolub-blue-dark">
-                  {lang === "fr" ? "Protocoles verifies" : "Verified protocols"}
+                  {lang === "fr" ? "Procedures de suivi" : "Monitoring procedures"}
                 </span>
                 <p className="mt-2 text-[11px] leading-relaxed text-pizolub-blue-dark/70">
                   {lang === "fr"
-                    ? "Controle, formulation et validation continue sur chaque gamme strategique."
-                    : "Control, formulation, and continuous validation across every strategic range."}
+                    ? "Le laboratoire accompagne le contrôle, la conformité et l’analyse technique des huiles sur tout leur cycle de vie."
+                    : "The laboratory supports quality control, compliance, and technical analysis of oils throughout their lifecycle."}
                 </p>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 bg-pizolub-blue-light p-6 shadow-2xl z-20 border-b-4 border-r-4 border-pizolub-blue-dark text-white">
-                <p className="text-white font-black text-3xl leading-none">
-                  100%
+              <div className="absolute -bottom-4 -left-4 bg-pizolub-blue-light p-5 shadow-2xl z-20 border-b-4 border-r-4 border-pizolub-blue-dark text-white">
+                <p className="text-white font-black text-sm md:text-base leading-none uppercase tracking-[0.2em]">
+                  {lang === "fr" ? "Controle" : "Control"}
                 </p>
-                <p className="text-white/80 text-[9px] font-bold uppercase tracking-widest leading-none mt-1">
-                  {lang === "fr" ? "Surete labo" : "Lab safety"}
+                <p className="text-white/90 text-[9px] font-bold uppercase tracking-widest leading-none mt-2">
+                  {lang === "fr" ? "Qualite produit" : "Product quality"}
                 </p>
               </div>
             </motion.div>
@@ -156,7 +165,7 @@ export default function Laboratory({ lang }: LaboratoryProps) {
               </h2>
             </div>
 
-            <h3 className="text-4xl md:text-7xl font-black text-pizolub-blue-dark mb-8 leading-[0.9] font-display uppercase tracking-tighter">
+            <h3 className="section-title-underline text-4xl md:text-7xl font-black text-pizolub-blue-dark mb-8 leading-[0.9] font-display uppercase tracking-tighter">
               {content.title}
             </h3>
 
@@ -164,23 +173,35 @@ export default function Laboratory({ lang }: LaboratoryProps) {
               {content.desc}
             </p>
 
-            <div className="space-y-6">
-              {content.certs.map((item, i) => (
+            <div className="space-y-6 mb-10">
+              {content.analyses.map((analysis, i) => (
                 <motion.div
-                  key={i}
+                  key={analysis.title}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-start space-x-4"
+                  className="border border-gray-100 bg-gray-50 p-6 md:p-7"
                 >
-                  <div className="bg-gray-100 p-3 rounded-full mt-1">
-                    <CheckCircle2 size={18} className="text-pizolub-blue" />
-                  </div>
-                  <div>
-                    <h4 className="text-pizolub-blue-dark font-bold uppercase text-sm tracking-widest">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-400 text-xs mt-1">{item.desc}</p>
+                  <div className="flex items-start space-x-4">
+                    <div className="bg-white p-3 rounded-full mt-1 shadow-sm">
+                      <CheckCircle2 size={18} className="text-pizolub-blue" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-pizolub-blue-dark font-bold uppercase text-sm tracking-widest">
+                        {analysis.title}
+                      </h4>
+                      <ul className="mt-4 space-y-3">
+                        {analysis.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-3 text-gray-500 text-sm leading-relaxed"
+                          >
+                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-pizolub-blue-light shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </motion.div>
               ))}

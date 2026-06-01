@@ -12,11 +12,12 @@ import Products from "./components/Products";
 import Laboratory from "./components/Laboratory";
 import Coverage from "./components/Coverage";
 import Partners from "./components/Partners";
+import HistorySection from "./components/HistorySection";
+import RSE from "./components/RSE";
+import Values from "./components/Values";
 import CompanyNews from "./components/CompanyNews";
 import Careers from "./components/Careers";
-import Values from "./components/Values";
 import ContactForm from "./components/ContactForm";
-import QualityShowcase from "./components/QualityShowcase";
 import Footer from "./components/Footer";
 import { motion, useScroll, useSpring } from "motion/react";
 import { Language } from "./translations";
@@ -43,7 +44,10 @@ export default function App() {
       <main className="flex-grow">
         <Hero lang={lang} />
 
-        {/* The 01-04 Sections from live site */}
+        {/* New editorial history section */}
+        <HistorySection lang={lang} />
+
+        {/* Main capabilities and activities */}
         <MainSections lang={lang} />
 
         {/* Project Video Presentation */}
@@ -58,25 +62,28 @@ export default function App() {
         {/* Coverage Section */}
         <Coverage lang={lang} />
 
-        {/* Real World Showcase */}
-        <QualityShowcase lang={lang} />
-
-        {/* Company News */}
-        <CompanyNews lang={lang} />
-
         {/* Strategic Partners Section */}
         <Partners lang={lang} />
 
-        {/* Careers and Applications */}
+        {/* Corporate social responsibility */}
+        <RSE lang={lang} />
+
+        {/* Company values */}
+        <Values lang={lang} />
+
+        {/* Media and company highlights */}
+        <CompanyNews lang={lang} />
+
+        {/* Careers */}
         <Careers lang={lang} />
 
-        {/* Contact Form from the live site */}
+        {/* Contact Form */}
         <ContactForm lang={lang} />
 
         {/* CTA Section */}
         <section className="bg-pizolub-blue-night py-32 relative overflow-hidden">
           <div className="absolute inset-0 pattern-gabon opacity-10" />
-          <div className="max-w-7xl mx-auto px-4 md:px-8 text-center relative z-10 border-y border-white/10 py-20 px-6">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 text-center relative z-10 glass-surface rounded-[32px] py-20 px-6">
             <div className="flex justify-center space-x-2 mb-8">
               <div className="w-16 h-1 bg-gabon-green" />
               <div className="w-16 h-1 bg-gabon-yellow" />
@@ -89,12 +96,12 @@ export default function App() {
               </span>
             </h2>
             <a
-              href="#products"
+              href="#contact"
               className="bg-gabon-green text-white font-black px-16 py-5 hover:bg-white hover:text-gabon-green transition-all rounded-sm uppercase tracking-[0.2em] text-sm shadow-2xl inline-block"
             >
               {lang === "fr"
-                ? "Consulter nos fiches techniques"
-                : "Consult our technical sheets"}
+                ? "Contacter l'entreprise"
+                : "Contact the company"}
             </a>
           </div>
         </section>

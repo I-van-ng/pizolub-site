@@ -10,20 +10,48 @@ interface ContactFormProps {
 export default function ContactForm({ lang }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const t = translations[lang].contact;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      subject: String(formData.get("subject") || ""),
+      message: String(formData.get("message") || ""),
+    };
 
-    // Simulate API call
-    setTimeout(() => {
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || "Une erreur est survenue lors de l'envoi.");
+      }
+
+      form.reset();
       setIsSubmitting(false);
       setIsSubmitted(true);
 
-      // Reset after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1500);
+      window.setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      setIsSubmitting(false);
+      setErrorMessage(
+        error instanceof Error ? error.message : "L'envoi a échoué. Réessayez.",
+      );
+    }
   };
 
   return (
@@ -31,7 +59,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="bg-white shadow-2xl rounded-sm overflow-hidden flex flex-col lg:flex-row min-h-[600px]">
           <div className="lg:w-1/3 bg-pizolub-blue-dark p-6 sm:p-8 md:p-12 text-white">
-            <h3 className="text-xl md:text-2xl font-black mb-6 md:mb-8 uppercase tracking-wider">
+            <h3 className="section-title-underline text-xl md:text-2xl font-black mb-6 md:mb-8 uppercase tracking-wider">
               {t.title}
             </h3>
             <p className="text-white/85 mb-8 md:mb-12 leading-relaxed text-sm">
@@ -105,6 +133,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
                       <input
                         required
                         type="text"
+                        name="name"
                         className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                         placeholder="Ex: Jean Dupont"
                       />
@@ -116,6 +145,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
                       <input
                         required
                         type="email"
+                        name="email"
                         className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                         placeholder="jean.dupont@email.com"
                       />
@@ -127,6 +157,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
                       <input
                         required
                         type="text"
+                        name="subject"
                         className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                         placeholder="Comment pouvons-nous vous aider ?"
                       />
@@ -138,10 +169,19 @@ export default function ContactForm({ lang }: ContactFormProps) {
                       <textarea
                         required
                         rows={4}
+                        name="message"
                         className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors resize-none"
                         placeholder="Votre message..."
                       />
                     </div>
+                    {errorMessage && (
+                      <p
+                        className="md:col-span-2 text-sm text-red-600 font-medium"
+                        role="alert"
+                      >
+                        {errorMessage}
+                      </p>
+                    )}
                     <div className="md:col-span-2 pt-4">
                       <button
                         disabled={isSubmitting}

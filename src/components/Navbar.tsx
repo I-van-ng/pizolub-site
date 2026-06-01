@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import Logo from "./Logo";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
-import { Language, translations } from "../translations";
+import { Language } from "../translations";
 
 interface NavbarProps {
   lang: Language;
@@ -12,20 +12,52 @@ interface NavbarProps {
 
 export default function Navbar({ lang, setLang }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const t = translations[lang].nav;
 
   const navLinks = [
-    { name: t.home, href: "#", active: true },
-    { name: t.products, href: "#products", active: false },
-    { name: t.activities, href: "#activities", active: false },
-    { name: t.coverage, href: "#coverage", active: false },
-    { name: t.partners, href: "#partners", active: false },
-    { name: lang === "fr" ? "RECRUTEMENT" : "CAREERS", href: "#careers", active: false },
-    { name: t.contact, href: "#contact", active: false },
+    {
+      name: lang === "fr" ? "Accueil" : "Home",
+      href: "#",
+      active: true,
+    },
+    {
+      name: lang === "fr" ? "A propos" : "About",
+      href: "#about",
+      active: false,
+    },
+    {
+      name: lang === "fr" ? "Activites" : "Activities",
+      href: "#activities",
+      active: false,
+    },
+    {
+      name: lang === "fr" ? "Industrie" : "Industry",
+      href: "#products",
+      active: false,
+    },
+    {
+      name: "RSE",
+      href: "#rse",
+      active: false,
+    },
+    {
+      name: lang === "fr" ? "Medias" : "Media",
+      href: "#news",
+      active: false,
+    },
+    {
+      name: lang === "fr" ? "Carrieres" : "Careers",
+      href: "#careers",
+      active: false,
+    },
+    {
+      name: lang === "fr" ? "Contact" : "Contact",
+      href: "#contact",
+      active: false,
+    },
   ];
 
   return (
-    <nav className="w-full sticky top-0 z-50 bg-pizolub-blue-dark shadow-sm font-sans">
+    <nav className="w-full sticky top-0 z-50 glass-dark shadow-sm font-sans">
       <div className="h-1 w-full flex">
         <div className="flex-1 bg-gabon-green" />
         <div className="flex-1 bg-gabon-yellow" />
@@ -72,7 +104,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
             <Globe className="w-4 h-4 text-white" />
             <button
               onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-              className="text-[10px] font-black tracking-widest text-white hover:text-gabon-yellow transition-colors"
+              className="text-[10px] font-black tracking-widest text-white hover:text-gabon-yellow transition-colors cursor-pointer"
             >
               {lang.toUpperCase()}
             </button>
@@ -82,7 +114,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
         <div className="flex items-center space-x-4 lg:hidden">
           <button
             onClick={() => setLang(lang === "fr" ? "en" : "fr")}
-            className="text-[10px] font-black tracking-widest bg-gray-100 px-2 py-1 rounded-sm"
+            className="text-[10px] font-black tracking-widest bg-white/10 text-white hover:bg-gabon-yellow hover:text-pizolub-blue-dark px-3 py-1.5 rounded-sm border border-white/10 transition-colors cursor-pointer"
           >
             {lang.toUpperCase()}
           </button>

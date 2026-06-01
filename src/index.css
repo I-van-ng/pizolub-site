@@ -16,8 +16,18 @@
 }
 
 @layer base {
+  html {
+    background:
+      radial-gradient(circle at top left, rgba(60, 99, 130, 0.28), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(10, 61, 98, 0.24), transparent 30%),
+      linear-gradient(180deg, #07111b 0%, #04101a 100%);
+  }
+
   body {
     @apply bg-pizolub-blue-night text-white antialiased;
+    background:
+      linear-gradient(180deg, rgba(4, 16, 26, 0.74) 0%, rgba(4, 16, 26, 0.92) 100%);
+    min-height: 100vh;
   }
 }
 
@@ -46,4 +56,60 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.glass-surface {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+}
+
+.glass-surface-soft {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.025) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-dark {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 24, 40, 0.72) 0%,
+    rgba(7, 24, 40, 0.5) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.section-title-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.45rem;
+}
+
+.section-title-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: clamp(84px, 28%, 148px);
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-pizolub-blue-light) 0%,
+    #f7c948 55%,
+    rgba(247, 201, 72, 0.2) 100%
+  );
 }

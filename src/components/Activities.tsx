@@ -18,48 +18,21 @@ export default function MainSections({ lang }: ActivitiesProps) {
       content: t.sections[0].content,
       details:
         lang === "fr"
-          ? "PIZOLUB est la société de formulation de lubrifiants, créée en 1978 par ELF et SHELL Gabon. La dénomination sociale de la société PIZOLUB est la fabrication, l'emballage, le stockage et la vente de lubrifiants industriels et automobiles ainsi que d'emballages métalliques et plastiques.\n\nAvec une présence régionale dans des pays tels que le Cameroun, le Congo, la RDC, la Centrafrique, Sao-Tomée et la Guinée Équatorial, nous couvrons une large zone géographique."
+          ? "PIZOLUB est la societe de formulation de lubrifiants, creee en 1978 par ELF et SHELL Gabon. La denomination sociale de la societe PIZOLUB est la fabrication, l'emballage, le stockage et la vente de lubrifiants industriels et automobiles ainsi que d'emballages metalliques et plastiques.\n\nAvec une presence regionale dans des pays tels que le Cameroun, le Congo, la RDC, la Centrafrique, Sao-Tomee et la Guinee Equatorial, nous couvrons une large zone geographique."
           : "PIZOLUB is a lubricant formulation company created in 1978 by ELF and SHELL Gabon. The company manufactures, packages, stores, and sells industrial and automotive lubricants, as well as metal and plastic packaging.\n\nWith a regional presence in countries such as Cameroon, Congo, the DRC, the Central African Republic, Sao Tome and Equatorial Guinea, we cover a wide geographic area.",
       image: "/notre-histoire.jpg",
       accent: "bg-pizolub-blue",
     },
     {
-      id: "02",
-      title: t.sections[1].title,
-      subtitle: t.sections[1].subtitle,
-      content: t.sections[1].content,
-      details:
-        lang === "fr"
-          ? "Nos huiles moteurs sont composées d'huiles de base d'origines minérales à hauteur de 60 à 85%, et d'additifs synthétiques produits par synthèse chimique. Ce procédé renforce les propriétés fondamentales de nos huiles."
-          : "Our engine oils are made of 60 to 85% mineral-based oils, combined with synthetic additives produced through chemical synthesis. This process reinforces the fundamental properties of our oils.",
-      image: "/expertise-local.jpg",
-      accent: "bg-pizolub-blue-light",
-    },
-    {
-      id: "03",
-      title: lang === "fr" ? "PROXIMITÉ GABONAISE" : "GABONESE PROXIMITY",
-      subtitle:
-        lang === "fr"
-          ? "Dans tout le Gabon, nous sommes là"
-          : "Throughout Gabon, we are there",
-      content:
-        lang === "fr"
-          ? "Grâce à notre réseau logistique, Pizolub est présent dans les 9 provinces. Que vous soyez un transporteur à Oyem ou un industriel à Moanda, notre engagement reste le même."
-          : "Thanks to our logistics network, Pizolub is present in all 9 provinces. Whether you are a transporter in Oyem or an industrialist in Moanda, our commitment remains the same.",
-      details: null,
-      image: "/proximite-gabonaise-logistique.jpg",
-      accent: "bg-pizolub-blue-dark",
-    },
-    {
       id: "04",
-      title: lang === "fr" ? "DURABILITÉ" : "SUSTAINABILITY",
+      title: lang === "fr" ? "DURABILITE" : "SUSTAINABILITY",
       subtitle:
         lang === "fr"
-          ? "Protéger la beauté de notre terre"
+          ? "Proteger la beaute de notre terre"
           : "Protecting our land's beauty",
       content:
         lang === "fr"
-          ? "Parce que le Gabon est le poumon de l'Afrique, Pizolub s'inscrit dans une démarche éco-responsable. Nous optimisons nos processus pour préserver notre biodiversité unique."
+          ? "Parce que le Gabon est le poumon de l'Afrique, Pizolub s'inscrit dans une demarche eco-responsable. Nous optimisons nos processus pour preserver notre biodiversite unique."
           : "Because Gabon is the lung of Africa, Pizolub is part of an eco-responsible approach. We optimize our processes to preserve our unique biodiversity.",
       details: null,
       image: "/durabilite-beaute-terre.jpg",
@@ -67,18 +40,18 @@ export default function MainSections({ lang }: ActivitiesProps) {
     },
     {
       id: "05",
-      title: lang === "fr" ? "NOS ACTIVITÉS" : "OUR ACTIVITIES",
+      title: lang === "fr" ? "NOS ACTIVITES" : "OUR ACTIVITIES",
       subtitle:
         lang === "fr"
           ? "Formulation, emballage et stockage au service de la performance"
           : "Formulation, packaging, and storage serving performance",
       content:
         lang === "fr"
-          ? "Notre activité principale couvre la formulation des lubrifiants automobiles et industriels, avec une exigence constante de qualité."
+          ? "Notre activite principale couvre la formulation des lubrifiants automobiles et industriels, avec une exigence constante de qualite."
           : "Our core business covers the formulation of automotive and industrial lubricants, with a constant focus on quality.",
       details:
         lang === "fr"
-          ? "Notre activité principale réside dans la formulation des lubrifiants, tant pour le secteur automobile que pour le secteur industriel. Nous avons à cœur de développer des produits de haute qualité, adaptés aux besoins spécifiques de nos clients. Grâce à notre équipe d'experts, nous sommes en mesure de formuler des lubrifiants qui répondent aux normes les plus strictes et qui garantissent une performance optimale. En parallèle, nous nous occupons également de la fabrication d'emballages plastiques et métalliques. Ces emballages sont essentiels pour garantir la protection et la conservation des lubrifiants que nous produisons. Nous nous engageons à utiliser des matériaux durables et respectueux de l'environnement dans le processus de fabrication. De plus, notre société propose des services de stockage et d'entreposage des lubrifiants. Nous disposons d'installations modernes et sécurisées, permettant de gérer efficacement les stocks tout en respectant les réglementations en vigueur."
+          ? "Notre activite principale reside dans la formulation des lubrifiants, tant pour le secteur automobile que pour le secteur industriel. Nous avons a coeur de developper des produits de haute qualite, adaptes aux besoins specifiques de nos clients. Grace a notre equipe d'experts, nous sommes en mesure de formuler des lubrifiants qui repondent aux normes les plus strictes et qui garantissent une performance optimale. En parallele, nous nous occupons egalement de la fabrication d'emballages plastiques et metalliques. Ces emballages sont essentiels pour garantir la protection et la conservation des lubrifiants que nous produisons. Nous nous engageons a utiliser des materiaux durables et respectueux de l'environnement dans le processus de fabrication. De plus, notre societe propose des services de stockage et d'entreposage des lubrifiants. Nous disposons d'installations modernes et securisees, permettant de gerer efficacement les stocks tout en respectant les reglementations en vigueur."
           : "Our main activity lies in the formulation of lubricants for both the automotive and industrial sectors. We are committed to developing high-quality products tailored to the specific needs of our clients. Thanks to our team of experts, we are able to formulate lubricants that meet the strictest standards and guarantee optimal performance.\n\nAt the same time, we also manufacture plastic and metal packaging. These packages are essential to ensure the protection and preservation of the lubricants we produce. We are committed to using durable and environmentally respectful materials in the manufacturing process.\n\nIn addition, our company provides lubricant storage and warehousing services. We have modern and secure facilities that allow us to manage inventory efficiently while complying with current regulations.",
       image: "/distribution-masse.jpg",
       accent: "bg-gabon-yellow",
@@ -132,7 +105,7 @@ export default function MainSections({ lang }: ActivitiesProps) {
                   >
                     {openSection === section.id
                       ? lang === "fr"
-                        ? "Réduire"
+                        ? "Reduire"
                         : "Show less"
                       : lang === "fr"
                         ? "En savoir plus"

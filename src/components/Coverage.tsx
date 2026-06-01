@@ -180,7 +180,7 @@ export default function Coverage({ lang }: CoverageProps) {
                 {t.badge}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white uppercase font-display leading-[0.95] md:leading-[0.9] mb-4">
+            <h2 className="section-title-underline text-3xl sm:text-4xl md:text-6xl font-black text-white uppercase font-display leading-[0.95] md:leading-[0.9] mb-4">
               {t.title}
             </h2>
             <p className="text-white/72 font-medium max-w-lg leading-relaxed">
@@ -219,7 +219,7 @@ export default function Coverage({ lang }: CoverageProps) {
           </div>
         </div>
 
-        <div className="rounded-[20px] md:rounded-[28px] overflow-hidden border border-white/10 bg-white/4 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+        <div className="rounded-[20px] md:rounded-[28px] overflow-hidden glass-surface">
           <div className="bg-[#cfe4f3] relative min-h-[420px] sm:min-h-[560px] md:min-h-[760px] overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.72),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(7,47,74,0.06))]" />
 
@@ -423,7 +423,7 @@ export default function Coverage({ lang }: CoverageProps) {
             {markets.map((market) => (
               <div
                 key={market.country}
-                className="bg-[#071828] p-5 md:p-6 hover:bg-pizolub-blue group transition-all cursor-pointer"
+                className="glass-dark p-5 md:p-6 hover:bg-pizolub-blue/40 group transition-all cursor-pointer"
               >
                 <div className="flex justify-between">
                   <h3 className="font-black text-white group-hover:text-white uppercase transition-colors">

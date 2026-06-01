@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export default function ProjectVideo() {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   return (
     <section className="py-24 bg-pizolub-blue-night relative overflow-hidden">
       <div className="absolute inset-0 pattern-gabon opacity-5" />
@@ -48,42 +45,15 @@ export default function ProjectVideo() {
               transition={{ duration: 0.8 }}
               className="relative aspect-video shadow-2xl border-[12px] border-white/5 rounded-lg overflow-hidden group bg-black"
             >
-              {!isPlaying ? (
-                <button
-                  type="button"
-                  onClick={() => setIsPlaying(true)}
-                  className="absolute inset-0 w-full h-full text-left"
-                >
-                  <img
-                    src="/hero-image.jpg"
-                    alt="Apercu de la video Pizolub"
-                    className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-white/14 backdrop-blur-sm border border-white/20 flex items-center justify-center mb-5">
-                      <Play
-                        className="w-8 h-8 text-white ml-1"
-                        fill="currentColor"
-                      />
-                    </div>
-                    <p className="text-white font-black uppercase tracking-[0.25em] text-sm">
-                      Lancer la video
-                    </p>
-                  </div>
-                </button>
-              ) : (
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube-nocookie.com/embed/atqJDFs9Yac?rel=0&modestbranding=1"
-                  title="Pizolub Gabon - Presentation du projet"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              )}
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube-nocookie.com/embed/atqJDFs9Yac?rel=0&modestbranding=1"
+                title="Pizolub Gabon - Presentation du projet"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
 
               <div className="absolute top-0 right-0 p-4">
                 <div className="flex space-x-1">

@@ -38,7 +38,7 @@ export default function Partners({ lang }: PartnersProps) {
               </h2>
             </div>
             
-            <h3 className="text-3xl sm:text-4xl md:text-6xl font-black text-white font-display leading-[0.95] md:leading-[0.9] mb-6 md:mb-8">
+            <h3 className="section-title-underline text-3xl sm:text-4xl md:text-6xl font-black text-white font-display leading-[0.95] md:leading-[0.9] mb-6 md:mb-8">
               {t.title}
             </h3>
             
@@ -47,14 +47,14 @@ export default function Partners({ lang }: PartnersProps) {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-white/5 border border-white/10 p-6 backdrop-blur-md">
+              <div className="glass-surface-soft p-6">
                 <ShieldCheck className="text-pizolub-blue-light mb-4" size={32} />
                 <h4 className="text-white font-black text-sm uppercase mb-2">{t.cards[0].title}</h4>
                 <p className="text-white/50 text-xs leading-relaxed italic">
                   {t.cards[0].desc}
                 </p>
               </div>
-              <div className="bg-white/5 border border-white/10 p-6 backdrop-blur-md">
+              <div className="glass-surface-soft p-6">
                 <Store className="text-pizolub-blue mb-4" size={32} />
                 <h4 className="text-white font-black text-sm uppercase mb-2">{t.cards[1].title}</h4>
                 <p className="text-white/50 text-xs leading-relaxed italic">
@@ -66,7 +66,7 @@ export default function Partners({ lang }: PartnersProps) {
 
           {/* Right Content - Partners Grid/Marquee */}
           <div className="lg:w-1/2 w-full self-center">
-            <div className="bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10 rounded-sm relative overflow-hidden">
+            <div className="glass-surface p-5 sm:p-6 md:p-10 rounded-sm relative overflow-hidden">
                <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
                     style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
                

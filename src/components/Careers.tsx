@@ -130,15 +130,50 @@ export default function Careers({ lang }: CareersProps) {
   const t = content[lang];
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      fullName: String(formData.get("fullName") || ""),
+      email: String(formData.get("email") || ""),
+      phone: String(formData.get("phone") || ""),
+      position: String(formData.get("position") || ""),
+      experience: String(formData.get("experience") || ""),
+      cvUrl: String(formData.get("cvUrl") || ""),
+      message: String(formData.get("message") || ""),
+    };
 
-    setTimeout(() => {
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch("/api/careers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || "Votre candidature n'a pas pu être envoyée.");
+      }
+
+      form.reset();
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1500);
+
+      window.setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      setIsSubmitting(false);
+      setErrorMessage(
+        error instanceof Error ? error.message : "L'envoi a échoué. Réessayez.",
+      );
+    }
   };
 
   return (
@@ -152,7 +187,7 @@ export default function Careers({ lang }: CareersProps) {
             </p>
             <div className="w-10 h-1 bg-gabon-yellow" />
           </div>
-          <h2 className="text-white text-3xl md:text-6xl font-black leading-[0.95] font-display mb-6">
+          <h2 className="section-title-underline text-white text-3xl md:text-6xl font-black leading-[0.95] font-display mb-6">
             {t.title}
           </h2>
           <p className="text-white/80 text-base md:text-lg leading-relaxed">
@@ -237,6 +272,7 @@ export default function Careers({ lang }: CareersProps) {
                     <input
                       required
                       type="text"
+                      name="fullName"
                       placeholder={t.placeholders.fullName}
                       className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                     />
@@ -249,6 +285,7 @@ export default function Careers({ lang }: CareersProps) {
                     <input
                       required
                       type="email"
+                      name="email"
                       placeholder={t.placeholders.email}
                       className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                     />
@@ -261,6 +298,7 @@ export default function Careers({ lang }: CareersProps) {
                     <input
                       required
                       type="text"
+                      name="phone"
                       placeholder={t.placeholders.phone}
                       className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                     />
@@ -272,6 +310,7 @@ export default function Careers({ lang }: CareersProps) {
                     </label>
                     <select
                       required
+                      name="position"
                       className="border-b-2 border-gray-200 py-3 bg-transparent focus:outline-none focus:border-pizolub-blue transition-colors"
                       defaultValue=""
                     >
@@ -292,6 +331,7 @@ export default function Careers({ lang }: CareersProps) {
                     </label>
                     <input
                       type="text"
+                      name="experience"
                       placeholder={t.placeholders.experience}
                       className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                     />
@@ -303,6 +343,7 @@ export default function Careers({ lang }: CareersProps) {
                     </label>
                     <input
                       type="url"
+                      name="cvUrl"
                       placeholder={t.placeholders.cv}
                       className="border-b-2 border-gray-200 py-3 focus:outline-none focus:border-pizolub-blue transition-colors"
                     />
@@ -315,10 +356,17 @@ export default function Careers({ lang }: CareersProps) {
                     <textarea
                       required
                       rows={5}
+                      name="message"
                       placeholder={t.placeholders.message}
                       className="border-b-2 border-gray-200 py-3 resize-none focus:outline-none focus:border-pizolub-blue transition-colors"
                     />
                   </div>
+
+                  {errorMessage && (
+                    <p className="md:col-span-2 text-sm text-red-600 font-medium" role="alert">
+                      {errorMessage}
+                    </p>
+                  )}
 
                   <div className="md:col-span-2 pt-2">
                     <button

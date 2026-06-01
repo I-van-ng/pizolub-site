@@ -82,7 +82,7 @@ export default function CompanyNews({ lang }: CompanyNewsProps) {
               {t.badge}
             </p>
           </div>
-          <h2 className="text-pizolub-blue-night text-3xl md:text-6xl font-black leading-[0.95] font-display mb-5">
+          <h2 className="section-title-underline text-pizolub-blue-night text-3xl md:text-6xl font-black leading-[0.95] font-display mb-5">
             {t.title}
           </h2>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl">

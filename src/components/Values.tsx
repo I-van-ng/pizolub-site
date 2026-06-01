@@ -21,7 +21,7 @@ export default function Values({ lang }: ValuesProps) {
             </span>
             <div className="w-8 h-px bg-pizolub-blue-light" />
           </div>
-          <h2 className="text-4xl font-black text-pizolub-blue-dark uppercase tracking-tight">
+          <h2 className="section-title-underline text-4xl font-black text-pizolub-blue-dark uppercase tracking-tight">
             {t.title}
           </h2>
         </div>

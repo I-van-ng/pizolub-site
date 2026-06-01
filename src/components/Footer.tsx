@@ -1,3 +1,4 @@
+import { FormEvent, useState } from "react";
 import Logo from "./Logo";
 import { Facebook, Instagram, Linkedin, Send } from "lucide-react";
 import { Language, translations } from "../translations";
@@ -8,6 +9,49 @@ interface FooterProps {
 
 export default function Footer({ lang }: FooterProps) {
   const t = translations[lang].footer;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [newsletterMessage, setNewsletterMessage] = useState<string | null>(null);
+  const [newsletterError, setNewsletterError] = useState<string | null>(null);
+
+  const handleNewsletterSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const email = String(formData.get("email") || "");
+
+    setIsSubmitting(true);
+    setNewsletterMessage(null);
+    setNewsletterError(null);
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || "Newsletter subscription failed.");
+      }
+
+      form.reset();
+      setNewsletterMessage(
+        lang === "fr"
+          ? "Inscription prise en compte."
+          : "Subscription saved successfully.",
+      );
+    } catch (error) {
+      setNewsletterError(
+        error instanceof Error ? error.message : "Une erreur est survenue.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className="bg-pizolub-blue-night text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -88,23 +132,42 @@ export default function Footer({ lang }: FooterProps) {
                 ? "Abonnez-vous pour recevoir nos actualites."
                 : "Subscribe to receive our news."}
             </p>
-            <div className="flex flex-col space-y-3">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col space-y-3">
               <div className="relative">
                 <input
                   type="email"
+                  name="email"
                   placeholder={
                     lang === "fr" ? "Entrez votre email" : "Enter your email"
                   }
                   className="w-full bg-white/10 border border-white/20 rounded-sm py-3 px-4 text-sm text-white placeholder:text-white/55 focus:outline-none focus:border-pizolub-blue-light transition-colors"
                 />
-                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-pizolub-blue-light hover:text-white">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-pizolub-blue-light hover:text-white disabled:opacity-50"
+                >
                   <Send className="w-4 h-4" />
                 </button>
               </div>
-              <button className="bg-pizolub-blue text-white font-bold text-xs py-3 rounded-sm hover:scale-105 transition-transform">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-pizolub-blue text-white font-bold text-xs py-3 rounded-sm hover:scale-105 transition-transform disabled:opacity-60"
+              >
                 {t.newsletterBtn}
               </button>
-            </div>
+              {newsletterMessage && (
+                <p className="text-sm text-pizolub-blue-light" role="status">
+                  {newsletterMessage}
+                </p>
+              )}
+              {newsletterError && (
+                <p className="text-sm text-red-300" role="alert">
+                  {newsletterError}
+                </p>
+              )}
+            </form>
           </div>
         </div>
 
