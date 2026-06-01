@@ -30,6 +30,6 @@ This project contains the Pizolub website.
 1. Push this repo to GitHub.
 2. Create a new Web Service on Render and connect the repo.
 3. Render will use `render.yaml` with `npm run build` and `npm start`.
-4. Set `APP_URL` and `CORS_ORIGIN` to your Render service URL after the first deploy.
-5. Add `CONTACT_EMAIL` and the `SMTP_*` variables if you want email delivery instead of local JSON storage.
+4. Add `CONTACT_EMAIL` and the `SMTP_*` variables if you want email delivery instead of local JSON storage.
+5. `APP_URL` and `CORS_ORIGIN` are optional now because the server reads `RENDER_EXTERNAL_URL` on Render.
 6. If you keep the JSON fallback, note that `data/*.json` is ephemeral unless you attach a persistent disk.

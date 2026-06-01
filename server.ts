@@ -19,9 +19,12 @@ const projectRoot = process.cwd();
 const distDir = path.resolve(projectRoot, "dist");
 const dataDir = path.resolve(projectRoot, "data");
 const contactEmail = process.env.CONTACT_EMAIL || "accueil@pizolub.ga";
+const renderExternalUrl = process.env.RENDER_EXTERNAL_URL;
+const appUrl = process.env.APP_URL || renderExternalUrl || "http://localhost:3000";
 const allowedOrigins = [
   process.env.CORS_ORIGIN,
-  process.env.APP_URL,
+  appUrl,
+  renderExternalUrl,
   "http://localhost:3000",
   "http://127.0.0.1:3000",
   "http://localhost:3001",
